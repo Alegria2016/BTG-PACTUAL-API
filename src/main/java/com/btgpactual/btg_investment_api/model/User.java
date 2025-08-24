@@ -18,6 +18,9 @@ public class User implements UserDetails {
     private List<String> roles;
     private boolean enabled = true;
 
+    private Double balance;
+    private String notificationPreference; // "EMAIL" o "SMS"
+
     // Constructores
     public User() {}
 
@@ -72,4 +75,20 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() { return enabled; }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public String getNotificationPreference() {
+        return notificationPreference;
+    }
+
+    public void setNotificationPreference(String notificationPreference) {
+        this.notificationPreference = notificationPreference;
+    }
 }

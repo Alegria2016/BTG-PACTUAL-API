@@ -2,6 +2,7 @@ package com.btgpactual.btg_investment_api.service;
 import com.btgpactual.btg_investment_api.model.*;
 import com.btgpactual.btg_investment_api.repository.ClientRepository;
 import com.btgpactual.btg_investment_api.repository.TransactionRepository;
+import com.btgpactual.btg_investment_api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -24,13 +25,27 @@ public class ClientService {
     @Autowired
     private NotificationService notificationService;
 
+    private final UserRepository userRepository;
+
+    public ClientService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     public Client getClientByUserId(String userId) {
         return clientRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
     }
 
+    public User getUserByEmail(String userId) {
+        return userRepository.findByEmail(userId)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
+
     public Client subscribeToFund(String userId, String fundId) {
-        Client client = getClientByUserId(userId);
+
+        User user = getUserByEmail(userId);
+        Client client = getClientByUserId(user.getId());
+        System.out.println("================ USER ID: "+user.getId());
         Fund fund = fundService.getFundById(fundId)
                 .orElseThrow(() -> new RuntimeException("Fondo no encontrado"));
 
@@ -83,7 +98,9 @@ public class ClientService {
     }
 
     public Client cancelSubscription(String userId, String fundId) {
-        Client client = getClientByUserId(userId);
+
+        User user = getUserByEmail(userId);
+        Client client = getClientByUserId(user.getId());
 
         // Buscar suscripción activa
         FundSubscription subscription = client.getSubscriptions().stream()
@@ -122,7 +139,8 @@ public class ClientService {
     }
 
     public List<Transaction> getTransactionHistory(String userId) {
-        Client client = getClientByUserId(userId);
+        User user = getUserByEmail(userId);
+        Client client = getClientByUserId(user.getId());
         return transactionRepository.findByClientId(client.getId());
     }
 }

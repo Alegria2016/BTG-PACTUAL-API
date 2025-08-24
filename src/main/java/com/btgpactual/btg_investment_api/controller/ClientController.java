@@ -28,7 +28,7 @@ public class ClientController {
         }
     }
 
-    @PostMapping("/{fundId}/subscribe")
+    @PostMapping("/subscribe/{fundId}")
     @Operation(summary = "Suscribirse a un nuevo fondo (apertura).")
     @PreAuthorize("hasAnyRole('CLIENT', 'ADMIN')")
     public ResponseEntity<?> subscribeToFund(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user,
@@ -41,7 +41,8 @@ public class ClientController {
         }
     }
 
-    @PostMapping("/{fundId}/cancel")
+    @PostMapping("/cancel/{fundId}")
+    @Operation(summary = "Cancelar la suscripción a un fondo actual.")
     public ResponseEntity<?> cancelSubscription(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user,
                                                 @PathVariable String fundId) {
         try {
@@ -53,6 +54,8 @@ public class ClientController {
     }
 
     @GetMapping("/transactions")
+    @Operation(summary = "Ver historial de transacciones (aperturas y cancelaciones).")
+    @PreAuthorize("hasAnyRole('CLIENT', 'ADMIN')")
     public ResponseEntity<List<Transaction>> getTransactionHistory(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
         try {
             List<Transaction> transactions = clientService.getTransactionHistory(user.getUsername());

@@ -1,6 +1,8 @@
 package com.btgpactual.btg_investment_api.service;
 
 import com.btgpactual.btg_investment_api.dto.*;
+import com.btgpactual.btg_investment_api.model.Client;
+import com.btgpactual.btg_investment_api.repository.ClientRepository;
 import com.btgpactual.btg_investment_api.security.JwtService;
 import io.jsonwebtoken.Claims;
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -29,44 +32,63 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    private final ClientRepository clientRepository;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthService.class);
 
     public AuthService(UserRepository userRepository,
                        PasswordEncoder passwordEncoder,
                        JwtService jwtService,
-                       AuthenticationManager authenticationManager) {
+                       AuthenticationManager authenticationManager, ClientRepository clientRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
+        this.clientRepository = clientRepository;
     }
 
     public AuthResponse register(RegisterRequest request) {
         LOGGER.info("Intentando registrar usuario: {}", request.email());
 
-        if (userRepository.findByEmail(request.email()).isPresent()) {
+        if (userRepository.existsByEmail(request.email())) {
             LOGGER.warn("Intento de registro con email ya existente: {}", request.email());
             throw new RuntimeException("El usuario ya existe");
         }
 
+        // Validaciones adicionales
+        if (request.balance() < 0) {
+            throw new RuntimeException("El balance no puede ser negativo");
+        }
+
+        if (!request.isValid()) {
+            throw new RuntimeException("Datos de registro inválidos");
+        }
+
+        // Crear usuario
         var user = new User(
                 request.email(),
                 passwordEncoder.encode(request.password()),
                 request.firstName(),
                 request.lastName(),
-                request.roles() != null ? request.roles() : List.of("ROLE_CLIENT")
+                request.roles()
         );
 
         userRepository.save(user);
         LOGGER.info("Usuario registrado exitosamente: {}", request.email());
 
+        // ✅ Crear cliente automáticamente con los datos del registro
+        Client client = createClientFromRegistration(request,user);
+
         var jwtToken = jwtService.generateToken(user);
+
         return new AuthResponse(
                 jwtToken,
                 user.getEmail(),
                 user.getFirstName(),
                 user.getLastName(),
-                user.getRoles()
+                user.getRoles(),
+                client.getBalance(),
+                client.getNotificationPreference()
         );
     }
 
@@ -277,5 +299,18 @@ public class AuthService {
         LOGGER.info("Mensaje: Use el siguiente token para resetear su password: {}", resetToken);
         LOGGER.info("Enlace: http://localhost:8080/api/auth/reset-password/confirm?token={}", resetToken);
         LOGGER.info("===========================");
+    }
+
+    private Client createClientFromRegistration(RegisterRequest request, User user) {
+        Client client = new Client();
+        client.setBalance(request.balance());
+        client.setUserId(user.getId());
+        client.setNotificationPreference(request.notificationPreference());
+        client.setSubscriptions(new ArrayList<>());
+
+        LOGGER.info("Creando cliente para usuario {} con balance: {} y notificaciones: {}",
+                request.email(), request.balance(), request.notificationPreference());
+
+        return clientRepository.save(client);
     }
 }
