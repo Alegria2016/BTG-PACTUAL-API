@@ -35,6 +35,14 @@ URL de acceso: http://54.84.126.20:8080/swagger-ui/index.html#/
 - **4. Enviar notificación por email o SMS según preferencia del usuario al suscribirse a un
 fondo.** Se realiza documentacion tectnica de los servios y endpoints.
 
+## Reglas de negocio:
+
+- **Monto inicial del cliente: COP $500.000.** o superior
+- **Cada transacción debe tener un identificador único.** (o usar el Maven Wrapper incluido)
+- **Cada fondo tiene un monto mínimo de vinculación.** (local o Atlas, la conexión por defecto es a MongoDB Atlas)
+- **Al cancelar una suscripción, el valor de vinculación se retorna al cliente.** (opcional, para clonar el repositorio)
+- **Si no hay saldo suficiente, mostrar:** “No tiene saldo disponible para vincularse al fondo <Nombre del fondo>”
+
 
 
 
