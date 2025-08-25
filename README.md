@@ -67,9 +67,7 @@ Response:
 ## Reglas de negocio:
 
 - **Monto inicial del cliente: COP $500.000.**
-  ```sh
- "balance": 500000,
-```
+
 - **Cada transacción debe tener un identificador único.** (o usar el Maven Wrapper incluido)
 - **Cada fondo tiene un monto mínimo de vinculación.** (local o Atlas, la conexión por defecto es a MongoDB Atlas)
 - **Al cancelar una suscripción, el valor de vinculación se retorna al cliente.** (opcional, para clonar el repositorio)
