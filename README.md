@@ -17,7 +17,8 @@
 - **Pruebas unitarias** con JUnit y Mockito.
 
 ---
-
+## Abiente de Prueba en AWS
+URL de acceso: http://54.84.126.20:8080/swagger-ui/index.html#/ 
 ## Documentación del Proyecto OPEN-API
 
 <img width="1352" height="564" alt="image" src="https://github.com/user-attachments/assets/4cf7a238-e7b7-4ba0-8629-c14ea4339097" />
