@@ -4,6 +4,7 @@ import com.btgpactual.btg_investment_api.dto.*;
 import com.btgpactual.btg_investment_api.model.User;
 import com.btgpactual.btg_investment_api.security.JwtService;
 import com.btgpactual.btg_investment_api.service.AuthService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    @Operation(summary = "Registrar usuario.")
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
         try {
             AuthResponse response = authService.register(request);
@@ -56,47 +58,7 @@ public class AuthController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/refresh")
-    public ResponseEntity<AuthResponse> refreshToken(@RequestHeader("Authorization") String authHeader) {
-        AuthResponse response = authService.refreshToken(authHeader);
-        return ResponseEntity.ok(response);
-    }
 
-    @PostMapping("/change-password")
-    public ResponseEntity<Void> changePassword(
-            @AuthenticationPrincipal UserDetails userDetails,
-            @Valid @RequestBody PasswordChangeRequest request) {
-        authService.changePassword(userDetails.getUsername(), request);
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping("/reset-password")
-    public ResponseEntity<Void> resetPassword(@RequestParam String email) {
-        authService.resetPassword(email);
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping("/reset-password/confirm")
-    public ResponseEntity<Void> confirmPasswordReset(
-            @RequestParam String token,
-            @RequestParam String newPassword) {
-        authService.confirmPasswordReset(token, newPassword);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/profile")
-    public ResponseEntity<UserResponse> getProfile(@AuthenticationPrincipal UserDetails userDetails) {
-        UserResponse response = authService.getUserProfile(userDetails.getUsername());
-        return ResponseEntity.ok(response);
-    }
-
-    @PutMapping("/profile")
-    public ResponseEntity<UserResponse> updateProfile(
-            @AuthenticationPrincipal UserDetails userDetails,
-            @Valid @RequestBody RegisterRequest request) {
-        UserResponse response = authService.updateUserProfile(userDetails.getUsername(), request);
-        return ResponseEntity.ok(response);
-    }
 
     @GetMapping("/users")
     @PreAuthorize("hasRole('ADMIN')")
@@ -105,23 +67,5 @@ public class AuthController {
         return ResponseEntity.ok(users);
     }
 
-    @PostMapping("/users/{email}/deactivate")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> deactivateUser(@PathVariable String email) {
-        authService.deactivateUser(email);
-        return ResponseEntity.ok().build();
-    }
 
-    @PostMapping("/users/{email}/activate")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> activateUser(@PathVariable String email) {
-        authService.activateUser(email);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/validate-token")
-    public ResponseEntity<Boolean> validateToken(@RequestParam String token) {
-        boolean isValid = authService.validateToken(token);
-        return ResponseEntity.ok(isValid);
-    }
 }

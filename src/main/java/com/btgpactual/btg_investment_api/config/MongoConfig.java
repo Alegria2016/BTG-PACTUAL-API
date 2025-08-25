@@ -12,12 +12,12 @@ import com.mongodb.client.MongoClients;
 public class MongoConfig {
     @Bean
     public MongoClient mongoClient() {
-        return MongoClients.create("mongodb://localhost:27017");
+        return MongoClients.create("mongodb+srv://btg-user-db:heQNInkdayNqfPEd@btg-cluster.x28mha4.mongodb.net/?retryWrites=true&w=majority&appName=btg-cluster");
     }
 
     @Bean
     public MongoTemplate mongoTemplate(MongoClient mongoClient) {
-        return new MongoTemplate(mongoClient, "btg_investment_db");
+        return new MongoTemplate(mongoClient, "btg");
     }
 
     @Bean
