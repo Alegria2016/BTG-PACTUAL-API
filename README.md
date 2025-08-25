@@ -27,6 +27,20 @@ URL de acceso: http://54.84.126.20:8080/swagger-ui/index.html#/
 
 ---
 
+
+## Prueba de Funcionalidades.
+
+- **1. Suscribirse a un nuevo fondo (apertura).** Se realiza documentacion tectnica de los servios y endpoints.
+- **2. Cancelar la suscripción a un fondo actual.** Se realiza documentacion tectnica de los servios y endpoints.
+- **3. Ver historial de transacciones (aperturas y cancelaciones).** Se realiza documentacion tectnica de los servios y endpoints.
+- **4. Enviar notificación por email o SMS según preferencia del usuario al suscribirse a un
+fondo.** Se realiza documentacion tectnica de los servios y endpoints.
+
+
+
+
+---
+
 ## Requisitos Previos
 
 - **Java 17** o superior
