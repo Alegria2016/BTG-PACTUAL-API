@@ -18,11 +18,10 @@
 - **Pruebas unitarias** con JUnit y Mockito.
 
 ---
-## Abiente de Prueba en AWS
-http://54.84.126.20:8080/swagger-ui/index.html#
-### 5. Acceder a la documentación Swagger
 
-Una vez levantada la API, accede a la documentación interactiva en:
+### Abiente de Prueba en AWS 
+
+La aplicación esta documentada con OpenApi, accede a la documentación interactiva en:
 
 http://54.84.126.20:8080/swagger-ui/index.html#
 
