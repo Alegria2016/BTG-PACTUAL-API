@@ -20,11 +20,7 @@
 
 ## Documentación del Proyecto OPEN-API
 
-```
-.
 <img width="1352" height="564" alt="image" src="https://github.com/user-attachments/assets/4cf7a238-e7b7-4ba0-8629-c14ea4339097" />
-
-```
 
 ---
 
