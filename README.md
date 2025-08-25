@@ -60,7 +60,7 @@
 ### 1. Clonar el repositorio
 
 ```sh
-git clone [<URL_DEL_REPOSITORIO>](https://github.com/Alegria2016/BTG-PACTUAL-API)
+git clone https://github.com/Alegria2016/BTG-PACTUAL-API
 cd BTG-PACTUAL-API
 ```
 
