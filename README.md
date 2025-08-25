@@ -19,7 +19,7 @@
 
 ---
 
-### Abiente de Prueba en AWS 
+### Ambiente de Prueba en AWS 
 
 La aplicación esta documentada con OpenApi, accede a la documentación interactiva en:
 
