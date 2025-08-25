@@ -34,8 +34,11 @@ URL de acceso: http://54.84.126.20:8080/swagger-ui/index.html#/
 - **3. Ver historial de transacciones (aperturas y cancelaciones).** Se realiza documentacion tectnica de los servios y endpoints.
 - **4. Enviar notificación por email o SMS según preferencia del usuario al suscribirse a un
 fondo.** Se realiza documentacion tectnica de los servios y endpoints.
-- **Registrar Cliente ** Se realiza documentacion tectnica de los servios y endpoints.
+- **Registrar Cliente ** Servicio para el registrar el cliente.
 ```sh
+
+URL: http://54.84.126.20:8080/api/v1/auth/register
+
 Request:
 {
   "email": "felix@gmail.com",
