@@ -108,7 +108,7 @@ La API estará disponible en: [http://localhost:8080](http://localhost:8080)
 
 Una vez levantada la API, accede a la documentación interactiva en:
 
-[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+http://54.84.126.20:8080/swagger-ui/index.html#
 
 ---
 
