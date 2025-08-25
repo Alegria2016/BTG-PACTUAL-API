@@ -2,7 +2,7 @@
 
 ## Descripción
 
-**BTG-PACTUAL-API** es una API RESTful desarrollada en Java con Spring Boot para la gestión de inversiones, fondos y clientes, simulando la operativa de una plataforma de inversión. El sistema permite registrar usuarios, autenticarse mediante JWT, gestionar clientes, suscribirse a fondos, consultar transacciones y recibir notificaciones según preferencias.
+**BTG-PACTUAL-API** es una API RESTful desarrollada en Java con Spring Boot para la gestión de inversiones, fondos y clientes, simulando la operatividad de una plataforma de inversión. El sistema permite registrar usuarios, autenticarse mediante JWT, gestionar clientes, suscribirse a fondos, consultar transacciones y recibir notificaciones según preferencias.
 
 ### Características principales
 
@@ -60,7 +60,7 @@
 ### 1. Clonar el repositorio
 
 ```sh
-git clone <URL_DEL_REPOSITORIO>
+git clone [<URL_DEL_REPOSITORIO>](https://github.com/Alegria2016/BTG-PACTUAL-API)
 cd BTG-PACTUAL-API
 ```
 
