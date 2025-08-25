@@ -29,48 +29,19 @@ URL de acceso: http://54.84.126.20:8080/swagger-ui/index.html#/
 
 ## Prueba de Funcionalidades.
 
-- **1. Suscribirse a un nuevo fondo (apertura).** Se realiza documentacion tectnica de los servios y endpoints.
-- **2. Cancelar la suscripción a un fondo actual.** Se realiza documentacion tectnica de los servios y endpoints.
-- **3. Ver historial de transacciones (aperturas y cancelaciones).** Se realiza documentacion tectnica de los servios y endpoints.
-- **4. Enviar notificación por email o SMS según preferencia del usuario al suscribirse a un
-fondo.** Se realiza documentacion tectnica de los servios y endpoints.
-- **Registrar Cliente ** Servicio para el registrar el cliente.
-```sh
-
-URL: http://54.84.126.20:8080/api/v1/auth/register
-
-Request:
-{
-  "email": "felix@gmail.com",
-  "password": "password123",
-  "firstName": "FELIX",
-  "lastName": "ALEGRIA LOANGO",
-  "balance": 500000,
-  "notificationPreference": "SMS"
-}
-
-Response:
-{
-    "token": "eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJGRUxJWCIsImxhc3ROYW1lIjoiQUxFR1JJQSBMT0FOR08iLCJyb2xlcyI6WyJDTElFTlQiXSwic3ViIjoiZmVsaXhAZ21haWwuY29tIiwiaWF0IjoxNzU2MTQyMzI2LCJleHAiOjE3NTYyMjg3MjZ9.vtUHHue19m8KPfvjwbsB8WwYao5riBskIQauqqZgR0qHWyrMGz5KtLil-wapTyOpBEpdkPE6umqsyI15a6nIiA",
-    "email": "felix@gmail.com",
-    "firstName": "FELIX",
-    "lastName": "ALEGRIA LOANGO",
-    "roles": [
-        "CLIENT"
-    ],
-    "balance": 500000,
-    "notificationPreference": "SMS",
-    "expiresAt": "2025-08-26T17:18:46.008995355Z"
-}
-```
+- **1. Suscribirse a un nuevo fondo (apertura).** 
+- **2. Cancelar la suscripción a un fondo actual.** 
+- **3. Ver historial de transacciones (aperturas y cancelaciones).** 
+- **4. Enviar notificación por email o SMS según preferencia del usuario al suscribirse a un fondo.** 
+- **Registrar Cliente **
 
 ## Reglas de negocio:
 
 - **Monto inicial del cliente: COP $500.000.**
 
-- **Cada transacción debe tener un identificador único.** (o usar el Maven Wrapper incluido)
-- **Cada fondo tiene un monto mínimo de vinculación.** (local o Atlas, la conexión por defecto es a MongoDB Atlas)
-- **Al cancelar una suscripción, el valor de vinculación se retorna al cliente.** (opcional, para clonar el repositorio)
+- **Cada transacción debe tener un identificador único.** 
+- **Cada fondo tiene un monto mínimo de vinculación.**
+- **Al cancelar una suscripción, el valor de vinculación se retorna al cliente.** 
 - **Si no hay saldo suficiente, mostrar:** “No tiene saldo disponible para vincularse al fondo <Nombre del fondo>”
 
 
