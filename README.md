@@ -18,30 +18,12 @@
 
 ---
 
-## Estructura del Proyecto
+## Documentación del Proyecto OPEN-API
 
 ```
 .
-├── src/
-│   ├── main/
-│   │   ├── java/com/btgpactual/btg_investment_api/
-│   │   │   ├── controller/      # Controladores REST
-│   │   │   ├── dto/             # Objetos de transferencia de datos
-│   │   │   ├── model/           # Modelos de dominio (User, Client, Fund, etc.)
-│   │   │   ├── repository/      # Repositorios MongoDB
-│   │   │   ├── security/        # Seguridad y JWT
-│   │   │   ├── service/         # Lógica de negocio
-│   │   │   ├── config/          # Configuración de MongoDB e índices
-│   │   │   └── exception/       # Manejo global de errores
-│   │   └── resources/
-│   │       ├── application.properties
-│   │       └── application-prod.properties
-│   └── test/
-│       └── java/com/btgpactual/btg_investment_api/
-│           └── ...              # Pruebas unitarias
-├── pom.xml                      # Dependencias y configuración Maven
-├── mvnw, mvnw.cmd               # Maven Wrapper
-└── README.md                    # Este archivo
+<img width="1352" height="564" alt="image" src="https://github.com/user-attachments/assets/4cf7a238-e7b7-4ba0-8629-c14ea4339097" />
+
 ```
 
 ---
