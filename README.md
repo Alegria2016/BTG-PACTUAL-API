@@ -34,6 +34,32 @@ URL de acceso: http://54.84.126.20:8080/swagger-ui/index.html#/
 - **3. Ver historial de transacciones (aperturas y cancelaciones).** Se realiza documentacion tectnica de los servios y endpoints.
 - **4. Enviar notificación por email o SMS según preferencia del usuario al suscribirse a un
 fondo.** Se realiza documentacion tectnica de los servios y endpoints.
+- **Registrar Cliente ** Se realiza documentacion tectnica de los servios y endpoints.
+```sh
+Request:
+{
+  "email": "felix@gmail.com",
+  "password": "password123",
+  "firstName": "FELIX",
+  "lastName": "ALEGRIA LOANGO",
+  "balance": 500000,
+  "notificationPreference": "SMS"
+}
+
+Response:
+{
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJGRUxJWCIsImxhc3ROYW1lIjoiQUxFR1JJQSBMT0FOR08iLCJyb2xlcyI6WyJDTElFTlQiXSwic3ViIjoiZmVsaXhAZ21haWwuY29tIiwiaWF0IjoxNzU2MTQyMzI2LCJleHAiOjE3NTYyMjg3MjZ9.vtUHHue19m8KPfvjwbsB8WwYao5riBskIQauqqZgR0qHWyrMGz5KtLil-wapTyOpBEpdkPE6umqsyI15a6nIiA",
+    "email": "felix@gmail.com",
+    "firstName": "FELIX",
+    "lastName": "ALEGRIA LOANGO",
+    "roles": [
+        "CLIENT"
+    ],
+    "balance": 500000,
+    "notificationPreference": "SMS",
+    "expiresAt": "2025-08-26T17:18:46.008995355Z"
+}
+```
 
 ## Reglas de negocio:
 
