@@ -33,7 +33,7 @@ URL de acceso: http://54.84.126.20:8080/swagger-ui/index.html#/
 - **2. Cancelar la suscripción a un fondo actual.** 
 - **3. Ver historial de transacciones (aperturas y cancelaciones).** 
 - **4. Enviar notificación por email o SMS según preferencia del usuario al suscribirse a un fondo.** 
-- **Registrar Cliente **
+
 
 ## Reglas de negocio:
 
