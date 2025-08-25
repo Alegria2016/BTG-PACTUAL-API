@@ -22,6 +22,8 @@ URL de acceso: http://54.84.126.20:8080/swagger-ui/index.html#/
 - **Documentacion con OPEN-API** Se realiza documentacion tectnica de los servios y endpoints.
 
 <img width="1352" height="564" alt="image" src="https://github.com/user-attachments/assets/4cf7a238-e7b7-4ba0-8629-c14ea4339097" />
+<img width="1325" height="489" alt="image" src="https://github.com/user-attachments/assets/0b27571b-a95f-4f77-86b3-3b2a4d733daa" />
+
 
 ---
 
